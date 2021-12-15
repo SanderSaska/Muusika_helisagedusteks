@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 
 print('Enne programmi kasutamist on sul vaja alla laadida teek Crepe: https://pypi.org/project/crepe/')
 
+################# def Funktsioonid
+
 def otsi_asukohta(failinimi, faili_asukoht): # Otsib faili asukoha
     try:
         for root, dirs, files in os.walk(faili_asukoht):
@@ -18,6 +20,19 @@ def otsi_asukohta(failinimi, faili_asukoht): # Otsib faili asukoha
     except:
         print('Faili asukoht ei ole õigesti kirjutatud')
 
+def loe_andmeid(failinimi): # Loe failist vajalikud andmed
+    f = open(failinimi, 'r', encoding='utf-8')
+    aeg = []
+    helisagedus = []
+    f.readline() # Jätab päise vahele
+    for rida in f:
+        rida = rida.split(',')
+        aeg.append(float(rida[0]))
+        helisagedus.append(float(rida[1]))
+    f.close()
+    return aeg, helisagedus
+
+################# Põhiprogramm
 
 while True:
     print('Kas soovite uurida pala? (1)')
@@ -30,7 +45,7 @@ while True:
         fail_1 = input('Sisesta faili nimi ("_____.wav" tüüpi), mida tahad uurida: ')
         faili_asukoht_1 = input('Sisesta faili asukoht (nt. C:\\Users\\...\\Desktop või lihtsalt C:\\): ')
         kaust_1 = input('Sisesta kausta nimi, kuhu andmed salvestatakse (kui ei soovi, vajuta Enter): ')
-        täpsus = int(input('Kui täpselt soovite saada tulemust (mitme ns tagant uuritakse helisagedust: ')) 
+        täpsus = int(input('Kui täpselt soovite saada tulemust (mitme ns tagant uuritakse helisagedust): ')) 
 
         faili_asukoht_1 = faili_asukoht_1.replace('\\','/')
         faili_sihtkoht_1 = otsi_asukohta(fail_1, faili_asukoht_1)
@@ -58,21 +73,12 @@ while True:
         
         if valikud == '1':
             
-            fail_2 = input('Sisesta .csv tüüpi faili nimi, millest soovid luua graafikut: ')
-            faili_asukoht_2 = input('Sisesta faili asukoht (nt. C:\\Users\\...\\Desktop või lihtsalt C:\\): ')
+            fail_2_1 = input('Sisesta .csv tüüpi faili nimi, millest soovid luua graafikut: ')
+            faili_asukoht_2_1 = input('Sisesta faili asukoht (nt. C:\\Users\\...\\Desktop või lihtsalt C:\\): ')
 
-            faili_sihtkoht_2 = otsi_asukohta(fail_2, faili_asukoht_2)
+            faili_sihtkoht_2_1 = otsi_asukohta(fail_2_1, faili_asukoht_2_1)
 
-            # Loe failist vajalikud andmed
-            f = open(faili_sihtkoht_2, 'r', encoding='utf-8')
-            aeg = []
-            helisagedus = []
-            f.readline() # Jätab päise vahele
-            for rida in f:
-                rida = rida.split(',')
-                aeg.append(float(rida[0]))
-                helisagedus.append(float(rida[1]))
-            f.close()
+            aeg, helisagedus = loe_andmeid(faili_sihtkoht_2_1)
             
             # Vajalikute andmetega loo graafik
             plt.plot(aeg, helisagedus, 'r')
@@ -92,28 +98,9 @@ while True:
             faili_sihtkoht_2_2_1 = otsi_asukohta(fail_2_2_1, faili_asukoht_2_2_1)
             faili_sihtkoht_2_2_2 = otsi_asukohta(fail_2_2_2,  faili_asukoht_2_2_2)
 
-            # Loe failist vajalikud andmed
-            f = open(faili_sihtkoht_2_2_1, 'r', encoding='utf-8')
-            aeg_1 = []
-            helisagedus_1 = []
-            f.readline() # Jätab päise vahele
-            for rida in f:
-                rida = rida.split(',')
-                aeg_1.append(float(rida[0]))
-                helisagedus_1.append(float(rida[1]))
-            f.close()
+            aeg_1, helisagedus_1 = loe_andmeid(faili_sihtkoht_2_2_1)
+            aeg_2, helisagedus_2 = loe_andmeid(faili_sihtkoht_2_2_2)
 
-            # Loe failist vajalikud andmed
-            f = open(faili_sihtkoht_2_2_2, 'r', encoding='utf-8')
-            aeg_2 = []
-            helisagedus_2 = []
-            f.readline() # Jätab päise vahele
-            for rida in f:
-                rida = rida.split(',')
-                aeg_2.append(float(rida[0]))
-                helisagedus_2.append(float(rida[1]))
-            f.close()
-            
             # Vajalikute andmetega loo graafik
             plt.plot(aeg_1, helisagedus_1, 'r', aeg_2, helisagedus_2, 'b')
             plt.ylabel('Helisagedused')
@@ -125,6 +112,7 @@ while True:
         
     else:
         break
+
 
 
 
