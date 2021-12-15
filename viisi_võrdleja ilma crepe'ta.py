@@ -112,7 +112,5 @@ while True:
         break
 
 
-
-
 # # if the exe just in current dir
 # faili_sihtkoht = str(os.path.abspath(fail))
