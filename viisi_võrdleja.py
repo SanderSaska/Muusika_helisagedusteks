@@ -82,8 +82,8 @@ while True:
             plt.plot(aeg, helisagedus, 'r')
             plt.plot()
             plt.axis([0, round(max(aeg)+5, 1), 0, round(max(helisagedus), 1)])
-            plt.ylabel('Helisagedused')
-            plt.xlabel('Aeg')
+            plt.ylabel('Helisagedused (Hz)')
+            plt.xlabel('Aeg (s)')
             plt.show()
 
         if valikud == '2':
@@ -101,8 +101,8 @@ while True:
 
             # Vajalikute andmetega loob graafiku
             plt.plot(aeg_1, helisagedus_1, 'r', aeg_2, helisagedus_2, 'b')
-            plt.ylabel('Helisagedused')
-            plt.xlabel('Aeg')
+            plt.ylabel('Helisagedused (Hz)')
+            plt.xlabel('Aeg (s)')
             plt.show()
 
         else:
