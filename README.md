@@ -28,3 +28,7 @@ Programmiga on võimalik luua graafikuid kasutades matplotlib teeki. Võimalik o
 Vaja on topelt: 
 - sisestada uuritava helifaili nimi;
 - sisestada faili asukoht.
+
+##
+
+Vajalikud selgitused käskudele on toodud kommentaaridena programmis.
