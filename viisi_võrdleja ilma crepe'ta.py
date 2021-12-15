@@ -1,4 +1,4 @@
-from crepe.core import process_file
+# from crepe.core import process_file
 import os
 from pathlib import Path
 import numpy as np
@@ -44,31 +44,31 @@ while True:
     print('Välju (3)')
     valik = input('Mida soovite teha (1,2,3)?: ')
 
-    if valik == '1': # Uurib muusikapala
-
-        fail_1 = input('Sisesta faili nimi ("_____.wav" tüüpi), mida tahad uurida: ')
-        faili_asukoht_1 = input('Sisesta faili asukoht (nt. C:\\Users\\...\\Desktop või lihtsalt C:\\): ')
-        kaust_1 = input('Sisesta kausta nimi, kuhu andmed salvestatakse (kui ei soovi, vajuta Enter): ')
-        täpsus = int(input('Kui täpselt soovite saada tulemust (mitme ns tagant uuritakse helisagedust: ')) 
-
-        faili_asukoht_1 = faili_asukoht_1.replace('\\','/')
-        faili_sihtkoht_1 = otsi_asukohta(fail_1, faili_asukoht_1)
-
-        try:
-            if faili_sihtkoht_1 != None and täpsus > 0 and kaust_1 == '': # Kui uut kausta ei loodud
-                process_file(faili_sihtkoht_1, output=None, model_capacity='full', viterbi=True, center=True, save_activation=True, save_plot=True, plot_voicing=False, step_size=täpsus, verbose=True)
-                print('Tulemused salvestatud')
-            elif faili_sihtkoht_1 != None and täpsus > 0: # Kui loodi uus kaust
-                sihtkoht = str(os.path.join(faili_sihtkoht_1.strip(fail_1), kaust_1))
-                Path(sihtkoht).mkdir(parents=True, exist_ok=True)
-                process_file(faili_sihtkoht_1, output=sihtkoht, model_capacity='full', viterbi=True, center=True, save_activation=True, save_plot=True, plot_voicing=False, step_size=täpsus, verbose=True)
-                print('Tulemused salvestatud faili ' + kaust_1)
-            elif faili_sihtkoht_1 != None and täpsus <= 0: # Kui täpsus on negatiivne
-                print('Ei saanud salvestada, täpsus oli antud negatiivsena')
-        except:
-            print('Faili ei leidu antud aadressil')
-        
-        continue
+#     if valik == '1': # Uurib muusikapala
+# 
+#         fail_1 = input('Sisesta faili nimi ("_____.wav" tüüpi), mida tahad uurida: ')
+#         faili_asukoht_1 = input('Sisesta faili asukoht (nt. C:\\Users\\...\\Desktop või lihtsalt C:\\): ')
+#         kaust_1 = input('Sisesta kausta nimi, kuhu andmed salvestatakse (kui ei soovi, vajuta Enter): ')
+#         täpsus = int(input('Kui täpselt soovite saada tulemust (mitme ns tagant uuritakse helisagedust: ')) 
+# 
+#         faili_asukoht_1 = faili_asukoht_1.replace('\\','/')
+#         faili_sihtkoht_1 = otsi_asukohta(fail_1, faili_asukoht_1)
+# 
+#         try:
+#             if faili_sihtkoht_1 != None and täpsus > 0 and kaust_1 == '': # Kui uut kausta ei loodud
+#                 process_file(faili_sihtkoht_1, output=None, model_capacity='full', viterbi=True, center=True, save_activation=True, save_plot=True, plot_voicing=False, step_size=täpsus, verbose=True)
+#                 print('Tulemused salvestatud')
+#             elif faili_sihtkoht_1 != None and täpsus > 0: # Kui loodi uus kaust
+#                 sihtkoht = str(os.path.join(faili_sihtkoht_1.strip(fail_1), kaust_1))
+#                 Path(sihtkoht).mkdir(parents=True, exist_ok=True)
+#                 process_file(faili_sihtkoht_1, output=sihtkoht, model_capacity='full', viterbi=True, center=True, save_activation=True, save_plot=True, plot_voicing=False, step_size=täpsus, verbose=True)
+#                 print('Tulemused salvestatud faili ' + kaust_1)
+#             elif faili_sihtkoht_1 != None and täpsus <= 0: # Kui täpsus on negatiivne
+#                 print('Ei saanud salvestada, täpsus oli antud negatiivsena')
+#         except:
+#             print('Faili ei leidu antud aadressil')
+#         
+#         continue
     
     if valik == '2': # Koostab matplotlib'iga graafiku
         
