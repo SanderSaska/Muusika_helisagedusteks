@@ -13,14 +13,18 @@ Programm küsib järgmiselt:
 ![Programm küsib järgmiselt:](/pildid/valik_1.png)
 
 Vaja on: 
-- sisestada uuritava faili nimi;
-- faili asukoht;
+- sisestada uuritava helifaili nimi;
+- sisestada faili asukoht;
 - sisestada, kui täpselt uurib programm helifaili.
 
 Soovi korral võib sisestada kausta nime, kuhu andmed salvestatakse.
 
-Programm seejärel uurib faili ning loob 3 faili nagu [**siin**](/mozart).
+Programm seejärel uurib sisestatud helifaili ning loob 3 faili nagu [**siin**](/mozart).
 
 ### Graafikute koostamine
 Programmiga on võimalik luua graafikuid kasutades matplotlib teeki. Võimalik on luua ühte graafikut või võrrelda kahte.
 ![Näide:](/pildid/Graafik.jpg)
+
+Vaja on topelt: 
+- sisestada uuritava helifaili nimi;
+- sisestada faili asukoht.
