@@ -23,4 +23,4 @@ Programm seejärel uurib faili ning loob 3 faili nagu [**siin**](/mozart).
 
 ### Graafikute koostamine
 Programmiga on võimalik luua graafikuid kasutades matplotlib teeki. Võimalik on luua ühte graafikut või võrrelda kahte.
-![Näide:](/pildid/Graafik.png)
+![Näide:](/pildid/Graafik.jpg)
