@@ -3,6 +3,7 @@ Programm, millega saab uurida muusikapala.
 ## Enne kasutamist
   - Lae alla teek [**Crepe**](https://pypi.org/project/crepe/).
   - :exclamation: Programm töötab ainult **.wav** tüüpi helifailidega :exclamation:
+  - :grey_exclamation: [**Python**](https://www.python.org/downloads/) :grey_exclamation:
   
 ## Töö põhimõte
 ### Helifaili uurimine
