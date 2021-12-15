@@ -1,6 +1,7 @@
 # from crepe.core import process_file
 import os
 from pathlib import Path
+from typing import no_type_check_decorator
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -14,7 +15,7 @@ helisagedused = [16.35, 17.32, 18.35, 19.45, 20.6, 21.83, 23.12, 24.5, 25.96, 27
                 2093.0, 2217.46, 2349.32, 2489.02, 2637.02, 2793.83, 2959.96, 3135.96, 3322.44, 3520.0, 3729.31, 3951.07, 
                 4186.01, 4434.92, 4698.63, 4978.03, 5274.04, 5587.65, 5919.91, 6271.93, 6644.88, 7040.0, 7458.62, 7902.13]
         
-noodid = [['C0', 'C#0/Db0', 'D0', 'D#0/Eb0', 'E0', 'F0', 'F#0/Gb0', 'G0', 'G#0/Ab0', 'A0', 'A#0/Bb0', 'B0', 
+noodid = ['C0', 'C#0/Db0', 'D0', 'D#0/Eb0', 'E0', 'F0', 'F#0/Gb0', 'G0', 'G#0/Ab0', 'A0', 'A#0/Bb0', 'B0', 
            'C1', 'C#1/Db1', 'D1', 'D#1/Eb1', 'E1', 'F1', 'F#1/Gb1', 'G1', 'G#1/Ab1', 'A1', 'A#1/Bb1', 'B1', 
            'C2', 'C#2/Db2', 'D2', 'D#2/Eb2', 'E2', 'F2', 'F#2/Gb2', 'G2', 'G#2/Ab2', 'A2', 'A#2/Bb2', 'B2', 
            'C3', 'C#3/Db3', 'D3', 'D#3/Eb3', 'E3', 'F3', 'F#3/Gb3', 'G3', 'G#3/Ab3', 'A3', 'A#3/Bb3', 'B3', 
@@ -22,7 +23,7 @@ noodid = [['C0', 'C#0/Db0', 'D0', 'D#0/Eb0', 'E0', 'F0', 'F#0/Gb0', 'G0', 'G#0/A
            'C5', 'C#5/Db5', 'D5', 'D#5/Eb5', 'E5', 'F5', 'F#5/Gb5', 'G5', 'G#5/Ab5', 'A5', 'A#5/Bb5', 'B5', 
            'C6', 'C#6/Db6', 'D6', 'D#6/Eb6', 'E6', 'F6', 'F#6/Gb6', 'G6', 'G#6/Ab6', 'A6', 'A#6/Bb6', 'B6', 
            'C7', 'C#7/Db7', 'D7', 'D#7/Eb7', 'E7', 'F7', 'F#7/Gb7', 'G7', 'G#7/Ab7', 'A7', 'A#7/Bb7', 'B7', 
-           'C8', 'C#8/Db8', 'D8', 'D#8/Eb8', 'E8', 'F8', 'F#8/Gb8', 'G8', 'G#8/Ab8', 'A8', 'A#8/Bb8', 'B8']]
+           'C8', 'C#8/Db8', 'D8', 'D#8/Eb8', 'E8', 'F8', 'F#8/Gb8', 'G8', 'G#8/Ab8', 'A8', 'A#8/Bb8', 'B8']
 
 print('Enne programmi kasutamist on sul vaja alla laadida teek Crepe: https://pypi.org/project/crepe/')
 
@@ -68,19 +69,80 @@ while True:
 #         except:
 #             print('Faili ei leidu antud aadressil')
 #         
-#         continue
     
     if valik == '2': # Koostab matplotlib'iga graafiku
         
-        fail_2 = input('Sisesta faili nimi, millest soovid luua graafikut: ')
-        faili_asukoht_2 = input('Sisesta faili asukoht (nt. C:\\Users\\...\\Desktop või lihtsalt C:\\): ')
+        print('Kas soovite luua graafikut(1)') 
+        print('Kas soovite võrrelda kahte graafikut(2)')
+        print('Välju(3)')
+        valikud = input('Mida soovite teha (1,2,3)?: ')
+        
+        if valikud == '1':
+            
+            fail_2 = input('Sisesta .csv tüüpi faili nimi, millest soovid luua graafikut: ')
+            faili_asukoht_2 = input('Sisesta faili asukoht (nt. C:\\Users\\...\\Desktop või lihtsalt C:\\): ')
 
-        faili_sihtkoht_2 = otsi_asukohta(fail_2, faili_asukoht_2)
+            faili_sihtkoht_2 = otsi_asukohta(fail_2, faili_asukoht_2)
 
-        f = open(faili_sihtkoht_2, 'r', encoding='utf-8')
+            # Loe failist vajalikud andmed
+            f = open(faili_sihtkoht_2, 'r', encoding='utf-8')
+            aeg = []
+            helisagedus = []
+            f.readline() # Jätab päise vahele
+            for rida in f:
+                rida = rida.split(',')
+                aeg.append(float(rida[0]))
+                helisagedus.append(float(rida[1]))
+            f.close()
+            
+            # Vajalikute andmetega loo graafik
+            plt.plot(aeg, helisagedus, 'r')
+            plt.plot()
+            plt.axis([0, round(max(aeg)+5, 1), 0, round(max(helisagedus), 1)])
+            plt.ylabel('Helisagedused')
+            plt.xlabel('Aeg')
+            plt.show()
 
-        f.close()
-        continue
+        if valikud == '2':
+            
+            fail_2_2_1 = input('Sisesta .csv tüüpi faili nimi, millest soovid luua graafikut: ')
+            faili_asukoht_2_2_1 = input('Sisesta faili asukoht (nt. C:\\Users\\...\\Desktop või lihtsalt C:\\): ')
+            fail_2_2_2 = input('Sisesta .csv tüüpi faili nimi, millest soovid luua graafikut: ')
+            faili_asukoht_2_2_2 = input('Sisesta faili asukoht (nt. C:\\Users\\...\\Desktop või lihtsalt C:\\): ')
+
+            faili_sihtkoht_2_2_1 = otsi_asukohta(fail_2_2_1, faili_asukoht_2_2_1)
+            faili_sihtkoht_2_2_2 = otsi_asukohta(fail_2_2_2,  faili_asukoht_2_2_2)
+
+            # Loe failist vajalikud andmed
+            f = open(faili_sihtkoht_2_2_1, 'r', encoding='utf-8')
+            aeg_1 = []
+            helisagedus_1 = []
+            f.readline() # Jätab päise vahele
+            for rida in f:
+                rida = rida.split(',')
+                aeg_1.append(float(rida[0]))
+                helisagedus_1.append(float(rida[1]))
+            f.close()
+
+            # Loe failist vajalikud andmed
+            f = open(faili_sihtkoht_2_2_2, 'r', encoding='utf-8')
+            aeg_2 = []
+            helisagedus_2 = []
+            f.readline() # Jätab päise vahele
+            for rida in f:
+                rida = rida.split(',')
+                aeg_2.append(float(rida[0]))
+                helisagedus_2.append(float(rida[1]))
+            f.close()
+            
+            # Vajalikute andmetega loo graafik
+            plt.plot(aeg_1, helisagedus_1, 'r', aeg_2, helisagedus_2, 'b')
+            plt.ylabel('Helisagedused')
+            plt.xlabel('Aeg')
+            plt.show()
+
+        else:
+            continue
         
     else:
         break
