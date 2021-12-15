@@ -1,7 +1,7 @@
 # Muusika helisagedusteks
 Programm, millega saab uurida muusikapala.
 ## Enne kasutamist
-  - :grey_exclamation: Lae alla teek [**Crepe**](https://pypi.org/project/crepe/) ja [**Tensorflow**](https://www.tensorflow.org/install). :grey_exclamation:
+  - :grey_exclamation: Lae alla teek [**Crepe**](https://pypi.org/project/crepe/) ja [**Tensorflow**](https://www.tensorflow.org/install) :grey_exclamation:
   - :grey_exclamation: [**Python**](https://www.python.org/downloads/) :grey_exclamation:
   - :exclamation: Programm töötab ainult **.wav** tüüpi helifailidega :exclamation:
   
