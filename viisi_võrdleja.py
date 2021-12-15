@@ -52,15 +52,19 @@ while True:
             if faili_sihtkoht_1 != None and täpsus > 0 and kaust_1 == '': # Kui uut kausta ei loodud
                 process_file(faili_sihtkoht_1, output=None, model_capacity='full', viterbi=True, center=True, save_activation=True, save_plot=True, plot_voicing=False, step_size=täpsus, verbose=True) # https://github.com/marl/crepe/blob/master/crepe/core.py
                 print('Tulemused salvestatud')
+                continue
             elif faili_sihtkoht_1 != None and täpsus > 0: # Kui loodi uus kaust
                 sihtkoht = str(os.path.join(faili_sihtkoht_1.strip(fail_1), kaust_1))
                 Path(sihtkoht).mkdir(parents=True, exist_ok=True) # https://www.geeksforgeeks.org/create-a-directory-in-python/
                 process_file(faili_sihtkoht_1, output=sihtkoht, model_capacity='full', viterbi=True, center=True, save_activation=True, save_plot=True, plot_voicing=False, step_size=täpsus, verbose=True) # https://github.com/marl/crepe/blob/master/crepe/core.py
                 print('Tulemused salvestatud faili ' + kaust_1)
+                continue
             elif faili_sihtkoht_1 != None and täpsus <= 0: # Kui täpsus on negatiivne
                 print('Ei saanud salvestada, täpsus oli antud negatiivsena')
+                continue
         except:
             print('Faili ei leidu antud aadressil')
+            continue
     
     if valik == '2': # Koostab matplotlib'iga graafiku
         
