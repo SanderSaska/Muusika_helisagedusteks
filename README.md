@@ -33,3 +33,6 @@ Vaja on topelt:
 ##
 
 Vajalikud selgitused käskudele on toodud kommentaaridena programmis.
+
+Kui programm ei peaks käivituma või ei lase uurida faili:
+  - kontrolli, kas vajalikud teegid on installitud.
