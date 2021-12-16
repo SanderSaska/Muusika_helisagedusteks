@@ -43,7 +43,7 @@ while True:
         fail_1 = input('Sisesta faili nimi ("_____.wav" tüüpi), mida tahad uurida: ')
         faili_asukoht_1 = input('Sisesta faili asukoht (nt. C:\\Users\\...\\Desktop või lihtsalt C:\\): ')
         kaust_1 = input('Sisesta kausta nimi, kuhu andmed salvestatakse (kui ei soovi, vajuta Enter): ')
-        täpsus = int(input('Kui täpselt soovite saada tulemust (mitme ns tagant uuritakse helisagedust): ')) 
+        täpsus = int(input('Kui täpselt soovite saada tulemust (mitme ms tagant uuritakse helisagedust): ')) 
 
         faili_asukoht_1 = faili_asukoht_1.replace('\\','/')
         faili_sihtkoht_1 = otsi_asukohta(fail_1, faili_asukoht_1)
